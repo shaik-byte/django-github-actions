@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:latest
+FROM python
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
