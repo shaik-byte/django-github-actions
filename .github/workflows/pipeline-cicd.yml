@@ -18,6 +18,10 @@ jobs:
         with:
           python-version: '3.x'
 
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
