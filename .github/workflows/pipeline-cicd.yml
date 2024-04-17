@@ -71,10 +71,10 @@ jobs:
           TAG: ${{ github.sha }}
         
         run: |
-          docker buildx build -t django-ecommer-api .
+          docker buildx build -t shaik .
           docker image ls
           echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
-          docker tag django-ecommer-api shaikbyte/django-ecommer:${TAG}
+          docker tag shaik shaikbyte/django-ecommer:${TAG}
           docker push shaikbyte/django-ecommer:${TAG}
 
 
