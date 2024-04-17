@@ -73,6 +73,6 @@ jobs:
         run: |
           docker buildx build  .
           echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
-          docker push 
+          docker push shaikbyte/django-ecommer:1
 
 
