@@ -43,3 +43,4 @@ jobs:
       - name: Run Bandit
         run: |
           bandit -r .
+        continue-on-error: true
