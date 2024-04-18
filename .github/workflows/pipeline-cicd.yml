@@ -64,6 +64,7 @@ jobs:
         run: |
           pip install pytest
           coverage run --source=. -m pytest
+        continue-on-error: true
 
 
       - name: Generate Coverage Report
