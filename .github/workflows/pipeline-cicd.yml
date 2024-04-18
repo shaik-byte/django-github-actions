@@ -52,6 +52,20 @@ jobs:
       - name: Run Safety
         run: |
           safety check --full-report
+      - name: Install dependencies
+        run: pip install flake8 coverage
+
+      - name: Run Flake8
+        run: |
+          flake8 .
+
+      - name: Run Coverage
+        run: |
+          coverage run --source=. -m pytest
+
+      - name: Generate Coverage Report
+        run: |
+          coverage report -m
 
   Image-build-and-push:
     runs-on: ubuntu-latest
