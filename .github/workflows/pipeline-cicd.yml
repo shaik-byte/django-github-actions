@@ -78,5 +78,6 @@ jobs:
           echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
           docker tag shaik shaikbyte/django-ecommer:${TAG}
           docker push shaikbyte/django-ecommer:${TAG}
+          
 
 
