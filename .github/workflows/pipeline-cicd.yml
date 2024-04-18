@@ -73,7 +73,7 @@ jobs:
           TAG: ${{ github.sha }}
         
         run: |
-          docker buildx build .
+          docker build -t first-image .
           docker image ls
           # echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
           # docker tag shaik shaikbyte/django-ecommer:${TAG}
