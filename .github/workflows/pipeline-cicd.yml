@@ -75,7 +75,7 @@ jobs:
         run: |
           docker build -t first-image .
           docker image ls
-          docker tag first-image:first-image shaikbyte/django-ecommer:1
+          docker tag first-image shaikbyte/django-ecommer:1
           echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
           # docker tag shaik shaikbyte/django-ecommer:${TAG}
           docker push shaikbyte/django-ecommer:1
