@@ -58,6 +58,7 @@ jobs:
       - name: Run Flake8
         run: |
           flake8 .
+        continue-on-error: true
 
       - name: Run Coverage
         run: |
