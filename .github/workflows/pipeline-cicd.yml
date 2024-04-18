@@ -67,7 +67,7 @@ jobs:
       - name: Build and push Docker image
         
         env:
-          RUNNER_NAME: actions
+          runs-on: self-hosted
           DOCKER_USERNAME: shaikbyte
           DOCKER_PASSWORD: Cooper@18041996
           TAG: ${{ github.sha }}
@@ -75,9 +75,9 @@ jobs:
         run: |
           docker buildx build -t shaik .
           docker image ls
-          echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
-          docker tag shaik shaikbyte/django-ecommer:${TAG}
-          docker push shaikbyte/django-ecommer:${TAG}
+          # echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
+          # docker tag shaik shaikbyte/django-ecommer:${TAG}
+          # docker push shaikbyte/django-ecommer:${TAG}
           
 
 
