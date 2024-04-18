@@ -80,7 +80,7 @@ jobs:
           echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
           sudo apt-get update
           sudo apt-get install -y trivy
-          trivy image first-image:1
+          trivy image first-image
           echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
           # docker tag shaik shaikbyte/django-ecommer:${TAG}
           docker push shaikbyte/django-ecommer:1
