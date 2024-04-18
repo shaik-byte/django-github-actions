@@ -62,6 +62,7 @@ jobs:
 
       - name: Run Coverage
         run: |
+          pip install pytest
           coverage run --source=. -m pytest
 
       - name: Generate Coverage Report
