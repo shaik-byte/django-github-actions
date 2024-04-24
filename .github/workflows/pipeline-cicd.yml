@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - shaik
+      - cicd-test
     tags:
       - '*'
 
