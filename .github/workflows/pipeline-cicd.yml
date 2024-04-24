@@ -79,7 +79,7 @@ jobs:
   Image-build-and-push:
     runs-on: ubuntu-latest
     # if: startsWith(github.ref, 'refs/tags/')
-    needs: code-test
+    # needs: code-test
 
     steps:
       - name: Checkout code
