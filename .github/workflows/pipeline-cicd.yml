@@ -102,8 +102,8 @@ jobs:
           docker build -t first-image .
           docker image ls
           docker tag first-image shaikbyte/django-ecommer:1
-          wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
-          echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+          # wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+          # echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
           sudo apt-get update
           sudo apt-get install -y trivy
           trivy image first-image
@@ -115,8 +115,6 @@ jobs:
     runs-on: ubuntu-latest
     if: "!startsWith(github.ref, 'refs/tags/')"
     needs:  Image-build-and-push
-    
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -132,3 +130,32 @@ jobs:
           mv kubernetes/* mychart/templates/  # Move your Kubernetes manifest files into the templates directory
           helm package mychart/  # Package the Helm chart
 
+      - name: helm-push
+        run: |
+          echo "helm push"
+      
+  dev-deployment:
+    runs-on: ubuntu-latest
+    if: "!startsWith(github.ref, 'refs/tags/')"
+    needs:  Image-build-and-push
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: helm pull
+        run: |
+         echo "pulling the helm charts"
+      - name: k8s dev deployment
+        run: |
+         echo "helm apply"
+
+  health-check:
+    runs-on: ubuntu-latest
+    if: "!startsWith(github.ref, 'refs/tags/')"
+    needs:  dev-deployment
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: health check for dev
+        run: |
+         echo "curl -w https://www.kubernetes.com"
+      
