@@ -11,6 +11,7 @@ on:
 jobs:
   install-dependencies:
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
 
     steps:
       - name: Checkout code
@@ -78,7 +79,7 @@ jobs:
 
   Image-build-and-push:
     runs-on: ubuntu-latest
-    # if: startsWith(github.ref, 'refs/tags/')
+    if: startsWith(github.ref, 'refs/tags/')
     # needs: code-test
 
     steps:
