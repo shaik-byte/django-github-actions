@@ -137,7 +137,7 @@ jobs:
   dev-deployment:
     runs-on: ubuntu-latest
     if: "!startsWith(github.ref, 'refs/tags/')"
-    needs:  Image-build-and-push
+    needs: Create-Helm-Chart
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
