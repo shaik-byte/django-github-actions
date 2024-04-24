@@ -56,6 +56,7 @@ jobs:
       - name: Run Safety
         run: |
           safety check --full-report
+      
       - name: Install dependencies
         run: pip install flake8 coverage
 
@@ -69,7 +70,6 @@ jobs:
           pip install pytest
           coverage run --source=. -m pytest
         continue-on-error: true
-
 
       - name: Generate Coverage Report
         run: |
