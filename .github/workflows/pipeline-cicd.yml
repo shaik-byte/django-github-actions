@@ -111,7 +111,7 @@ jobs:
           # trivy image first-image
           echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
           docker tag shaik shaikbyte/django-ecommer:${TAG}
-          docker push shaikbyte/django-ecommer:1
+         # docker push shaikbyte/django-ecommer:1
   
   Create-Helm-Chart:
     runs-on: ubuntu-latest
