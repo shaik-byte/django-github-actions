@@ -1,19 +1,17 @@
-name: Django-pipeline
+name: Compile Pipeline
 
 on:
-  push:
-    branches:
-      - shaik
-      - cicd-test
-    tags:
-      - '*'
   workflow_dispatch:
+    inputs:
+      compile:
+        description: 'Run compile job manually'
+        runs-on: ubuntu-latest
+        outputs:
+          result: ${{ steps.check.outputs.result }}
 
 jobs:
   compile:
     runs-on: ubuntu-latest
-    if: "!startsWith(github.ref, 'refs/tags/')"
-    needs: []
 
     steps:
       - name: Checkout code
@@ -29,34 +27,7 @@ jobs:
           echo "--------------installing the requirements-------------------------"
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-  test:
-    runs-on: ubuntu-latest
-    if: "!startsWith(github.ref, 'refs/tags/')"
-    needs: compile
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-
-
-
-  #   steps:
-  #     # Your test steps here...
-
-  # Image-build-and-push:
-  #   # Your existing steps...
-
-  # Create-Helm-Chart:
-  #   # Your existing steps...
-
-  # dev-deployment:
-  #   # Your existing steps...
-
-  # health-check:
-  #   # Your existing steps...
+          
+      - name: Record the result
+        id: check
+        run: echo "::set-output name=result::success"
