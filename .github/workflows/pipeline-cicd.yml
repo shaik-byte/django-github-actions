@@ -1,0 +1,53 @@
+name: Compile and Test Pipeline
+
+on:
+  push:
+    branches:
+      - "*" # Adjust the branch as needed
+  workflow_dispatch:
+    
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+
+      # - name: Set up Python
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: '3.x'
+
+      # - name: Install dependencies
+        # run: |
+      #     echo "--------------installing the requirements-------------------------"
+      #     python -m pip install --upgrade pip
+      #     pip install -r requirements.txt
+          
+      # - name: Run compilation
+      #   run: |
+      #     # Add compilation commands here
+
+  # test:
+  #   runs-on: ${{ github.event.inputs.test }}
+
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+
+  #     - name: Set up Python
+  #       uses: actions/setup-python@v2
+  #       with:
+  #         python-version: '3.x'
+
+  #     - name: Install test dependencies
+  #       run: |
+  #         pip install pytest
+
+      # - name: Run tests
+      #   run: |
+      #     pytest
+
+
