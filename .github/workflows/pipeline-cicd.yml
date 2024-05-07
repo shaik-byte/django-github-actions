@@ -3,7 +3,7 @@ name: Compile and Test Pipeline
 on:
   push:
     branches:
-      - cicd-test # Adjust the branch as needed
+      - "*" # Adjust the branch as needed
   workflow_dispatch:
     
 jobs:
