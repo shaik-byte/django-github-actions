@@ -13,21 +13,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
+      # - name: Set up Python
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: '3.x'
 
-      - name: Install dependencies
-        run: |
-          echo "--------------installing the requirements-------------------------"
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+      # - name: Install dependencies
+        # run: |
+      #     echo "--------------installing the requirements-------------------------"
+      #     python -m pip install --upgrade pip
+      #     pip install -r requirements.txt
           
-      - name: Run compilation
-        run: |
-          # Add compilation commands here
+      # - name: Run compilation
+      #   run: |
+      #     # Add compilation commands here
 
   # test:
   #   runs-on: ${{ github.event.inputs.test }}
@@ -45,8 +46,8 @@ jobs:
   #       run: |
   #         pip install pytest
 
-      - name: Run tests
-        run: |
-          pytest
+      # - name: Run tests
+      #   run: |
+      #     pytest
 
 
