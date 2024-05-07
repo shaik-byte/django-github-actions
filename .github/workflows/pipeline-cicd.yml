@@ -1,5 +1,6 @@
 name: Django-pipeline
 
+
 on:
   push:
     branches:
@@ -7,6 +8,7 @@ on:
       - cicd-test
     tags:
       - '*'
+  workflow_dispatch:
 
 jobs:
   compile:
