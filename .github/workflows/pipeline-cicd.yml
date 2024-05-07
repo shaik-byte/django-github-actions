@@ -1,13 +1,14 @@
-name: Compile Pipeline
+name: Compile and Test Pipeline
 
 on:
+  push:
+    branches:
+      - cicd-test # Adjust the branch as needed
   workflow_dispatch:
     inputs:
-      compile:
-        description: 'Run compile job manually'
+      test:
+        description: 'Run test stage manually'
         runs-on: ubuntu-latest
-        outputs:
-          result: ${{ steps.check.outputs.result }}
 
 jobs:
   compile:
@@ -28,6 +29,26 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           
-      - name: Record the result
-        id: check
-        run: echo "::set-output name=result::success"
+      - name: Run compilation
+        run: |
+          # Add compilation commands here
+
+  test:
+    runs-on: ${{ github.event.inputs.test }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install test dependencies
+        run: |
+          pip install pytest
+
+      - name: Run tests
+        run: |
+          pytest
